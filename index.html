@@ -304,7 +304,6 @@ function playSound(audio){
 
 function enterExperience(){
   document.getElementById("soundGate").classList.add("hidden");
-  bgMusic.play().catch(()=>{});
   playSound(clickSound);
 }
 
@@ -401,8 +400,15 @@ function boot(){
     document.getElementById("bar").style.width=(bi/lines.length*100)+"%";
     setTimeout(boot,CONFIG.bootDelay);
   }else{
-    setTimeout(()=>go("welcome"),700);
-  }
+  terminalSound.pause();
+  terminalSound.currentTime=0;
+
+  setTimeout(()=>{
+    go("welcome");
+    bgMusic.currentTime=0;
+    bgMusic.play().catch(()=>{});
+  },700);
+}
   
 }
 boot();
