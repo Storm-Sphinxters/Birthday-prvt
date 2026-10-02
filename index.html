@@ -389,8 +389,11 @@ function boot(){
     bootText.scrollTop=bootText.scrollHeight;
 
     if(currentLine==="READY."){
-      bootText.style.color="#00E5FF";
-      playSound(readySound);
+    terminalSound.pause();
+    terminalSound.currentTime=0;
+
+    bootText.style.color="#00E5FF";
+    playSound(readySound);
     }else{
       playSound(terminalSound);
     }
@@ -400,6 +403,7 @@ function boot(){
   }else{
     setTimeout(()=>go("welcome"),700);
   }
+  
 }
 boot();
 
