@@ -355,6 +355,18 @@ function submitTerminalPassword(){
   playSound(unlockSound);
   setTimeout(boot,350);
 }
+  
+function toggleSound(){
+  soundEnabled = !soundEnabled;
+
+  document.querySelectorAll("audio").forEach(audio => {
+    audio.muted = !soundEnabled;
+  });
+
+  document.getElementById("soundToggle").textContent =
+    soundEnabled ? "🔊" : "🔇";
+}
+  
 
 
 /* =========================
